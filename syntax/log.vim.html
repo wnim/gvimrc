@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>~/.vim/syntax/log.vim.html</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="vim">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,expand_tabs,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="oceanicnext">
+<style>
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #d8dee9; background-color: #1b2b34; }
+body { font-family: monospace; color: #d8dee9; background-color: #1b2b34; }
+* { font-size: 1em; }
+.OcFg4Bold { color: #adb5c0; font-weight: bold; }
+.OcRed { color: #ec5f67; }
+.OcLilac { color: #c594c5; }
+.OcYellow { color: #fac863; }
+.OcGreen { color: #99c794; }
+.OcAqua { color: #5fb3b3; }
+.Comment { color: #65737e; }
+.OcBlue { color: #6699cc; }
+-->
+</style>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Comment">&quot; Vim syntax file</span>
+<span class="Comment">&quot;</span> <span class="OcFg4Bold">Language:</span><span class="Comment"> UVM LOG FILES</span>
+<span class="Comment">&quot;</span> <span class="OcFg4Bold">Maintainer:</span><span class="Comment"> Nimrod Weinberg</span>
+<span class="Comment">&quot;</span> <span class="OcFg4Bold">Latest Revision:</span><span class="Comment"> June 27th 2022</span>
+
+<span class="OcRed">if</span> <span class="OcBlue">exists</span><span class="OcAqua">(</span><span class="OcGreen">&quot;b:current_syntax</span><span class="OcGreen">&quot;</span><span class="OcAqua">)</span>
+  <span class="OcRed">finish</span>
+<span class="OcRed">endif</span>
+
+<span class="OcRed">syn</span> <span class="OcYellow">match</span> <span class="OcYellow">uvm_info</span> <span class="OcGreen">&quot;UVM_INFO&quot;</span>
+<span class="OcRed">syn</span> <span class="OcYellow">match</span> <span class="OcYellow">uvm_warning</span> <span class="OcGreen">&quot;UVM_WARNING&quot;</span>
+<span class="OcRed">syn</span> <span class="OcYellow">match</span> <span class="OcYellow">uvm_error</span> <span class="OcGreen">&quot;UVM_ERROR&quot;</span>
+<span class="OcRed">syn</span> <span class="OcYellow">match</span> <span class="OcYellow">uvm_fatal</span> <span class="OcGreen">&quot;UVM_FATAL&quot;</span>
+
+<span class="OcRed">syn</span> <span class="OcYellow">region</span> <span class="OcYellow">id</span> <span class="OcYellow">start</span>=<span class="OcGreen">&quot;</span><span class="OcGreen">\[</span><span class="OcGreen">[A-Za-z]</span><span class="OcGreen">&quot;</span> <span class="OcYellow">end</span>=<span class="OcGreen">&quot;]&quot;</span> <span class="OcAqua">oneline</span>
+<span class="OcRed">syn</span> <span class="OcYellow">region</span> <span class="OcYellow">filepath</span> <span class="OcYellow">start</span>=<span class="OcGreen">&quot;\/&quot;</span> <span class="OcYellow">end</span>=<span class="OcGreen">&quot;</span><span class="OcGreen">[^\(]</span><span class="OcGreen">\+&quot;</span> <span class="OcAqua">oneline</span>
+<span class="OcRed">syn</span> <span class="OcYellow">region</span> <span class="OcYellow">timestampns</span> <span class="OcYellow">start</span>=<span class="OcGreen">&quot;@&quot;</span> <span class="OcYellow">end</span>=<span class="OcGreen">&quot; .s:&quot;</span> <span class="OcAqua">oneline</span>
+<span class="OcRed">syn</span> <span class="OcYellow">region</span> <span class="OcYellow">hier</span> <span class="OcYellow">start</span>=<span class="OcGreen">&quot;uvm_test_top&quot;</span> <span class="OcYellow">end</span>=<span class="OcGreen">&quot; &quot;</span> <span class="OcAqua">oneline</span>
+<span class="Comment">&quot;this one works unless the hierarchy ends with ]</span>
+<span class="Comment">&quot;syn match msg </span><span class="OcGreen">&quot;\(] \)\@&lt;=.*$&quot;</span>
+<span class="OcRed">syn</span> <span class="OcYellow">match</span> <span class="OcYellow">msg</span> <span class="OcGreen">&quot;</span><span class="OcAqua">\(</span><span class="OcGreen"> \[.*] </span><span class="OcAqua">\)</span><span class="OcGreen">\@&lt;=.*$&quot;</span>
+
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">uvm_info</span> <span class="OcYellow">Comment</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">uvm_warning</span> <span class="OcYellow">Constant</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">uvm_error</span> <span class="OcYellow">Identifier</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">uvm_fatal</span> <span class="OcYellow">function</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">filepath</span> <span class="OcYellow">Special</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">timestampns</span> <span class="OcYellow">function</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">hier</span> <span class="OcYellow">Identifier</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">id</span> <span class="OcYellow">vimCommand</span>
+<span class="OcLilac">hi</span> <span class="OcRed">def link</span> <span class="OcYellow">msg</span> <span class="OcYellow">type</span>
+
+
+<span class="Comment">&quot;each line will contain identifiers that have the same color in oceanicnext</span>
+<span class="Comment">&quot;color scheme</span>
+<span class="Comment">&quot;PreProc identifier - torqoise</span>
+<span class="Comment">&quot;special  constant - purple</span>
+<span class="Comment">&quot;Error - yellow</span>
+<span class="Comment">&quot;statement - gray</span>
+<span class="Comment">&quot;normal comment vimWarn- white</span>
+<span class="Comment">&quot;underlines - white underlined</span>
+<span class="Comment">&quot;type vimOption - yellow</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
