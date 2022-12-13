@@ -207,8 +207,8 @@ call plug#end()
 "let $PAGER=''
 
 "vim terminal configs
-"so f1 can move us to normal mode
-tnoremap <F1> <C-W>N
+"so ctrl+b can move us to normal mode
+tnoremap <C-b> <C-W>N
 
 ":vsp :vnew will open the new buffer on the right
 set splitright
