@@ -6,10 +6,18 @@ syntax on
 
 "this doesn't work. uncomment, open .sv file and run ":verbose set filetype" and see where it is set from
 "system verilog syntax coloring
-augroup filetypedetect
+"augroup filetypedetect
 "  au BufNewFile,BufRead .sv,.svh      setf verilog_systemverilog_uvm
 "  au BufNewFile,BufRead .vr,.vri      setf vera
-  autocmd BufNewFile,BufRead *.log setf log 
+"  autocmd BufNewFile, BufRead *.log setf log 
+"augroup END
+
+
+augroup LOG
+  au!
+  autocmd BufNewFile,BufRead .sv,.svh setf verilog_systemverilog_uvm
+  autocmd BufNewFile,BufRead .vr,.vri setf vera
+  autocmd BufNewFile,BufRead *.log    setf log
 augroup END
 
 " For plugins to load correctly
